@@ -36,4 +36,4 @@ RESERVAS:
 === METADADOS ===
 Status Integridade: ok
 Total Quartos: 1
-Total Reservas: 1
+Total Reservas: 1Documentação revisada em: Sat Apr  5 14:34:55 UTC 2025
