@@ -3,7 +3,7 @@ require 'header.php';
 require 'config.php';
 
 $conn = connectDB();
-$quartos = $conn->query("SELECT * FROM quartos ORDER BY andar, numero")->fetchAll(PDO::FETCH_ASSOC);
+$quartos = $conn->query("SELECT id as quarto_id, room_number as numero, room_type as tipo, floor as andar, price as preco, status FROM rooms ORDER BY floor, room_number")->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <div class="max-w-6xl mx-auto py-8">
@@ -75,7 +75,7 @@ document.getElementById('andar').addEventListener('change', function() {
     const quartos = document.querySelectorAll('.grid > div');
     
     quartos.forEach(quarto => {
-        const andarQuarto = quarto.querySelector('p').textContent.includes(andarSelecionado);
+                const andarQuarto = quarto.querySelector('p').textContent.includes(andarSelecionado + '°');
         if(andarSelecionado == 0 || andarQuarto) {
             quarto.style.display = 'block';
         } else {
