@@ -1,0 +1,39 @@
+=== DOCUMENTAÇÃO DO BANCO DE DADOS ===
+
+Data: $(date +%Y-%m-%d)
+
+=== TABELAS ===
+- rooms
+- reservations
+
+=== ESTRUTURA COMPLETA ===
+CREATE TABLE rooms (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    room_number TEXT NOT NULL UNIQUE,
+    room_type TEXT NOT NULL,
+    floor INTEGER NOT NULL,
+    price REAL NOT NULL,
+    status TEXT DEFAULT 'available'
+);
+
+CREATE TABLE reservations (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    room_id INTEGER NOT NULL,
+    guest_name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    check_in DATE NOT NULL,
+    check_out DATE NOT NULL,
+    FOREIGN KEY (room_id) REFERENCES rooms(id)
+);
+
+=== DADOS ATUAIS ===
+QUARTOS:
+1 | 102 | Standard | 1 | 150.0 | available
+
+RESERVAS:
+1 | 1 | Maria Oliveira | maria@email.com | 2023-11-10 | 2023-11-15
+
+=== METADADOS ===
+Status Integridade: ok
+Total Quartos: 1
+Total Reservas: 1
